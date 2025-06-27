@@ -1,0 +1,199 @@
+/* === NEON PULSE TIMELINE === */
+
+.timeline {
+  position: relative;
+  padding-left: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #c3cfe2, #c3cfe2, #e2ebf0);
+  transition: background-color 0.4s ease;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: fadeIn 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-item__dot {
+  position: absolute;
+  left: -11px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+}
+
+.timeline-item__dot .default-icon {
+  color: #757575;
+}
+
+.timeline-item__dot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item__content {
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border-left: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-item__content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+  transition: left 0.4s ease;
+}
+
+.timeline-item:hover .timeline-item__content {
+  transform: translateX(6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:hover .timeline-item__content::after {
+  left: 100%;
+}
+
+.timeline-item__title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.timeline-item__description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.timeline-item__time {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* === ТИПИ СВІТЛОЇ ТЕМИ === */
+.timeline-item--success .timeline-item__dot {
+  background: linear-gradient(135deg, #a5d6a7, #8bc34a);
+  color: white;
+}
+
+.timeline-item--success .timeline-item__content {
+  border-color: #a5d6a7;
+}
+
+.timeline-item--warning .timeline-item__dot {
+  background: linear-gradient(135deg, #ffe082, #ffd54f);
+  color: white;
+}
+
+.timeline-item--warning .timeline-item__content {
+  border-color: #ffe082;
+}
+
+.timeline-item--info .timeline-item__dot {
+  background: linear-gradient(135deg, #81d4fa, #4fc3f7);
+  color: white;
+}
+
+.timeline-item--info .timeline-item__content {
+  border-color: #81d4fa;
+}
+
+.timeline-item--danger .timeline-item__dot {
+  background: linear-gradient(135deg, #ef9a9a, #e57373);
+  color: white;
+}
+
+.timeline-item--danger .timeline-item__content {
+  border-color: #ef9a9a;
+}
+
+/* === DARK MODE === */
+
+.timeline--dark::before {
+  background: linear-gradient(to bottom, #333, #1b1b1b);
+}
+
+.timeline--dark .timeline-item__dot {
+  background: #2d2d2d;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+}
+
+.timeline--dark .timeline-item__content {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.timeline--dark .timeline-item__content::after {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+}
+
+.timeline--dark .timeline-item__title {
+  color: #fff;
+}
+
+.timeline--dark .timeline-item__description {
+  color: #ccc;
+}
+
+.timeline--dark .timeline-item__time {
+  color: #aaa;
+}
+
+/* Темні типи */
+.timeline-item--success.timeline-item--dark .timeline-item__dot {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+}
+
+.timeline-item--warning.timeline-item--dark .timeline-item__dot {
+  background: linear-gradient(135deg, #ffca28, #ffb300);
+}
+
+.timeline-item--info.timeline-item--dark .timeline-item__dot {
+  background: linear-gradient(135deg, #2196f3, #42a5f5);
+}
+
+.timeline-item--danger.timeline-item--dark .timeline-item__dot {
+  background: linear-gradient(135deg, #ef5350, #e53935);
+}

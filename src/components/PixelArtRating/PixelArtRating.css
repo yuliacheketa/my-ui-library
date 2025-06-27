@@ -1,0 +1,40 @@
+.pixel-rating {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  user-select: none;
+}
+
+.pixel-rating-icon {
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: filter 0.2s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.pixel-rating-icon.filled {
+  filter: none;
+}
+
+.pixel-rating-icon.current {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7));
+}
+
+.pixel-rating-icon:hover:not(.filled),
+.pixel-rating-icon:focus-visible:not(.filled) {
+  filter: none;
+  transform: scale(1.1);
+  outline: 2px solid #66aaff;
+  outline-offset: 4px;
+}
+
+
+@keyframes pixel-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}

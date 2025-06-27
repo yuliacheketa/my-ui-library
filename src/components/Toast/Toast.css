@@ -1,0 +1,113 @@
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.toast .icon {
+  font-size: 1.3em;
+  flex-shrink: 0;
+}
+
+/* ===== Pastel variant ===== */
+.toast.pastel {
+  background-color: #fffaf0; /* ніжно-кремовий */
+  color: #7c4d2e; /* теплий коричневий */
+  border-left: 5px solid #f9a825; /* золото-жовтий акцент */
+  box-shadow: 0 4px 15px rgba(249, 168, 37, 0.3);
+}
+
+.toast.pastel.success {
+  background-color: #e6f4ea; /* світло-зелений */
+  color: #2e7d32; /* темно-зелений */
+  border-left-color: #66bb6a; /* зелений акцент */
+  box-shadow: 0 4px 15px rgba(102, 187, 106, 0.3);
+}
+
+.toast.pastel.error {
+  background-color: #fdecea; /* світло-рожевий */
+  color: #b71c1c; /* темно-червоний */
+  border-left-color: #ef5350; /* червоний акцент */
+  box-shadow: 0 4px 15px rgba(239, 83, 80, 0.3);
+}
+
+.toast.pastel.info {
+  background-color: #e3f2fd; /* світло-блакитний */
+  color: #1565c0; /* темно-синій */
+  border-left-color: #42a5f5; /* синій акцент */
+  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
+}
+
+/* ===== Glass variant (оновлений) ===== */
+.toast.glass {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  color: #222222;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+
+.toast.glass.success {
+  border-left: 5px solid #8bc34a; /* ніжний зелений */
+}
+
+.toast.glass.error {
+  border-left: 5px solid #e57373; /* м’який червоний */
+}
+
+.toast.glass.info {
+  border-left: 5px solid #64b5f6; /* небесний синій */
+}
+
+/* ===== Retro (CRT) variant ===== */
+.toast.retro {
+  font-family: 'Courier New', monospace;
+  background-color: #0d0d0d;
+  color: #a6ff00;
+  border: 2px solid #a6ff00;
+  text-shadow:
+    0 0 5px #a6ff00,
+    0 0 10px #a6ff00,
+    0 0 20px #a6ff00;
+  box-shadow:
+    0 0 10px #a6ff00,
+    inset 0 0 10px #a6ff00;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.toast.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}       

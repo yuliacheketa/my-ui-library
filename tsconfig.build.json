@@ -9,9 +9,10 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./dist",
+      
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": false,
     "types": ["vite/client", "react"]
   },
   "include": ["src/**/*"]

@@ -1,0 +1,491 @@
+/* src/components/HorizontalTimeline/HorizontalTimeline.css */
+
+.horizontal-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 40px 20px 20px 20px;
+  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.horizontal-timeline.dark {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+/* === ЗАГАЛЬНА ЛІНІЯ ПІД КРОКАМИ === */
+.horizontal-timeline::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ddd;
+  z-index: 0;
+  transition: background-color 0.3s ease;
+}
+
+.horizontal-timeline.dark::before {
+  background: #444;
+}
+
+/* === КРОКИ === */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s forwards;
+  transition: transform 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step__dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.step__dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.03), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.step__dot:hover::before {
+  opacity: 1;
+}
+
+.step__dot:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+.step__icon {
+  font-size: 20px;
+  color: #757575;
+  transition: color 0.3s ease;
+}
+
+.step__content {
+  text-align: center;
+  max-width: 140px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.step__title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.step__description {
+  font-size: 0.8rem;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+/* === СТАНИ === */
+
+.step--completed .step__dot {
+  background: linear-gradient(135deg, #4caf50, #8bc34a);
+  color: white;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+.step--completed .step__icon {
+  color: white;
+}
+
+.step--current .step__dot {
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+  color: white;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+.step--current .step__icon {
+  color: white;
+}
+
+.step--upcoming .step__dot {
+  background: #eee;
+  color: #aaa;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.step--upcoming .step__icon {
+  color: #aaa;
+}
+
+/* === АНІМАЦІЇ === */
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+  }
+}
+/* === КРОКИ З ЖИВОЮ АНІМАЦІЄЮ === */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s forwards;
+  transition: transform 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === СТИЛЬ ТОЧОК З ЕФЕКТАМИ === */
+
+.step__dot {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-weight: bold;
+  overflow: hidden;
+}
+
+/* Неонове сяйво навколо точки при ховері */
+.step__dot::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.03), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: -1;
+}
+
+.step__dot:hover::before {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.step__dot:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Градієнтна анімація фону при ховері */
+.step__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.step__dot:hover::after {
+  opacity: 1;
+}
+
+/* === ІКОНКА === */
+.step__icon {
+  font-size: 20px;
+  color: #757575;
+  z-index: 3;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.step__dot:hover .step__icon {
+  transform: scale(1.2);
+  color: #333;
+}
+
+/* === СТАНИ КРОКІВ === */
+
+.step--completed .step__dot {
+  background: linear-gradient(135deg, #4caf50, #8bc34a);
+  color: white;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+.step--completed .step__icon {
+  color: white;
+}
+
+.step--current .step__dot {
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+  color: white;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+.step--current .step__icon {
+  color: white;
+}
+
+.step--upcoming .step__dot {
+  background: #eee;
+  color: #aaa;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.step--upcoming .step__icon {
+  color: #aaa;
+}
+
+/* === ЕФЕКТ ПУЛЬСАЦІЇ ДЛЯ АКТИВНОГО КРОКУ === */
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+  }
+}
+
+/* === DARK MODE === */
+
+.horizontal-timeline.dark .step__dot {
+  background-color: #2d2d2d;
+  border: 1px solid #444;
+  color: #f5f5f5;
+}
+
+.horizontal-timeline.dark .step__dot::before {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03), transparent 70%);
+}
+
+.horizontal-timeline.dark .step__dot:hover::before {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 70%);
+}
+
+/* === ГРАДІЄНТНА ЛІНІЯ ПІД КРОКАМИ === */
+
+.horizontal-timeline::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ddd, #bbb, #ddd);
+  z-index: 0;
+  transition: background-color 0.3s ease;
+}
+
+.horizontal-timeline.dark::before {
+  background: linear-gradient(to right, #444, #888, #444);
+}
+
+/* === ХОВЕР-ЕФЕКТ НА ЛІНІЇ === */
+
+.horizontal-timeline::before {
+  animation: lineGlow 6s infinite alternate ease-in-out;
+}
+
+@keyframes lineGlow {
+  0% { background-position: 0%; }
+  100% { background-position: 100%; }
+}
+
+.step__dot {
+  background: linear-gradient(135deg, #fff, #eee);
+  background-size: 400% 400%;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* === АДАПТИВНЕ ВІДОБРАЖЕННЯ === */
+@media (max-width: 768px) {
+  .horizontal-timeline {
+    flex-direction: column;
+    align-items: center;        
+    padding: 20px;
+  }
+  .horizontal-timeline::before {
+    top: 16px;
+    height: 1px;
+  }
+  .step {
+    margin-bottom: 20px;
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
+  }
+  .step__dot {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+  }
+  .step__icon {
+    font-size: 18px;
+  }
+  .step__content {  
+    max-width: 120px;
+  }
+  .step__title {
+    font-size: 0.85rem;
+  }
+  .step__description {
+    font-size: 0.75rem;
+  }
+  .step--completed .step__dot,
+  .step--current .step__dot,
+  .step--upcoming .step__dot {
+    width: 36px;
+    height: 36px;
+  }
+  .step--completed .step__icon,       
+  .step--current .step__icon,
+  .step--upcoming .step__icon {
+    font-size: 16px;
+  }
+  .step--completed .step__title,
+  .step--current .step__title,
+  .step--upcoming .step__title {
+    font-size: 0.8rem;
+  }
+  .step--completed .step__description,
+  .step--current .step__description,
+  .step--upcoming .step__description {
+    font-size: 0.7rem;
+  }
+  .step--completed .step__dot:hover,
+  .step--current .step__dot:hover,
+  .step--upcoming .step__dot:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .step--completed .step__icon:hover,
+  .step--current .step__icon:hover,
+  .step--upcoming .step__icon:hover {
+    transform: scale(1.1);
+    color: #333;
+  }
+  .step--completed .step__dot::before,
+  .step--current .step__dot::before,
+  .step--upcoming .step__dot::before {
+    inset: -3px;    
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.02), transparent 70%);
+  }
+  .step--completed .step__dot:hover::before,
+  .step--current .step__dot:hover::before,
+  .step--upcoming .step__dot:hover::before {
+    inset: -4px;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.05), transparent 70%);
+  }
+  .horizontal-timeline.dark .step__dot {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    color: #f5f5f5;
+  }   
+  .horizontal-timeline.dark .step__dot::before {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02), transparent 70%);
+  }
+  .horizontal-timeline.dark .step__dot:hover::before {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+  }
+  .horizontal-timeline.dark .step__dot {    
+    background: linear-gradient(135deg, #444, #555);
+    color: #f5f5f5;
+  }
+  .horizontal-timeline.dark .step__dot:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+  }
+  .horizontal-timeline.dark .step__icon {
+    color: #f5f5f5;
+  }
+  .horizontal-timeline.dark .step__icon:hover {
+    color: #e0e0e0;
+    transform: scale(1.2);
+  }
+  .horizontal-timeline.dark .step__content {
+    opacity: 0.9;
+    color: #e0e0e0;
+  }
+  .horizontal-timeline.dark .step__title {
+    color: #f5f5f5;     
+    font-weight: 600;
+  }
+  .horizontal-timeline.dark .step__description {
+    color: #b0b0b0;
+  }
+  .horizontal-timeline.dark::before {
+    background: linear-gradient(to right, #555, #777, #555);
+  }
+  .horizontal-timeline.dark::before {
+    animation: lineGlowDark 6s infinite alternate ease-in-out;
+  } 
+  @keyframes lineGlowDark {
+    0% { background-position: 0%; }
+    100% { background-position: 100%; }
+  }
+  .step__dot {
+    background: linear-gradient(135deg, #555, #666);
+    background-size: 400% 400%;
+    animation: gradientShiftDark 5s ease infinite;
+  }
+
+  @keyframes gradientShiftDark {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}

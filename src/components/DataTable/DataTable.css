@@ -1,0 +1,240 @@
+.data-table {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: auto;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Таблиця */
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+/* Заголовок таблиці */
+.data-table thead th {
+  position: relative;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #4b5563;
+  background-color: #f9fafb;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table thead th:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
+}
+
+/* Фільтр в заголовку */
+.data-table thead th input[type="text"] {
+  margin-top: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.data-table thead th input[type="text"]:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 106, 241, 0.2);
+}
+
+/* Сортувальні стрілки */
+.data-table thead th > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.data-table thead th > div span {
+  flex-grow: 1;
+}
+
+.data-table thead th svg {
+  width: 12px;
+  height: 12px;
+  fill: #9ca3af;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.data-table thead th.sort-asc svg {
+  transform: rotate(180deg);
+  fill: #6366f1;
+}
+
+.data-table thead th.sort-desc svg {
+  fill: #6366f1;
+}
+
+/* Тіло таблиці */
+.data-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.data-table tbody tr.selected {
+  background-color: #dbeafe;
+}
+
+.data-table tbody td {
+  padding: 12px 16px;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.data-table tbody td input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #6366f1;
+}
+
+/* Група */
+.group-header td {
+  background-color: #f3f4f6;
+  font-weight: bold;
+  color: #4b5563;
+}
+
+.dark .group-header td {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+/* Пагінація та експорт */
+.data-table > div:last-child {
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.data-table button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+}
+
+.data-table button:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+.data-table button:hover:not(:disabled) {
+  background-color: #4f46e5;
+}
+
+.data-table select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1.5px solid #d1d5db;
+  background-color: white;
+  cursor: pointer;
+}
+
+.data-table select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 106, 241, 0.2);
+}
+
+/* ==== DARK MODE ==== */
+
+.dark .data-table {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.dark .data-table thead th {
+  background-color: #1f2937;
+  color: #cbd5e1;
+  border-bottom-color: #334155;
+}
+
+.dark .data-table thead th:hover {
+  background-color: #334155;
+  color: #a5b4fc;
+}
+
+.dark .data-table thead th input[type="text"] {
+  background-color: #1f2937;
+  border-color: #4b5563;
+  color: #f8fafc;
+}
+
+.dark .data-table thead th input[type="text"]:focus {
+  border-color: #a5b4fc;
+  box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.2);
+}
+
+.dark .data-table tbody tr {
+  border-bottom-color: #334155;
+}
+
+.dark .data-table tbody tr:hover {
+  background-color: #334155;
+}
+
+.dark .data-table tbody tr.selected {
+  background-color: #3730a3;
+  color: white;
+}
+
+.dark .data-table tbody td {
+  color: #f8fafc;
+}
+
+.dark .data-table button {
+  background-color: #818cf8;
+  color: white;
+}
+
+.dark .data-table button:hover:not(:disabled) {
+  background-color: #6366f1;
+}
+
+.dark .data-table select {
+  background-color: #1f2937;
+  color: #f8fafc;
+  border-color: #4b5563;
+}
+
+.dark .data-table > div:last-child {
+  background-color: #1e293b;
+  border-top-color: #334155;
+}

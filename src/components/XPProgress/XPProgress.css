@@ -1,0 +1,57 @@
+.xp-container {
+  width: 100%;
+  max-width: 500px;
+  background: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+.xp-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.xp-bar {
+  position: relative;
+  height: 20px;
+  border-radius: 10px;
+  background: #333;
+  overflow: hidden;
+}
+
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  transition: width 0.6s ease;
+  border-radius: 10px 0 0 10px;
+}
+
+.xp-particles {
+  position: absolute;
+  right: 8px;
+  top: -10px;
+  font-size: 1.2rem;
+  animation: floatParticles 1s infinite;
+}
+
+@keyframes floatParticles {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-6px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,73 @@
+.checkbox-group-minimal {
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
+  user-select: none;
+}
+
+.checkbox-group-minimal-legend {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.checkbox-list-minimal {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.checkbox-minimal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-radius: 9999px; /* кругла */
+  padding: 0.4rem 1rem;
+  background-color: #f0f0f0;
+  transition: background-color 0.25s ease, box-shadow 0.3s ease;
+  outline-offset: 3px;
+  outline-color: transparent;
+  outline-style: solid;
+  outline-width: 2px;
+  user-select: none;
+}
+
+.checkbox-minimal:hover,
+.checkbox-minimal:focus-visible {
+  background-color: #dde6ff;
+  outline-color: #2260ff;
+  box-shadow: 0 0 8px rgba(34, 96, 255, 0.3);
+}
+
+.checkbox-input-minimal {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkbox-icon-minimal {
+  display: flex;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.checkbox-label-minimal {
+  font-size: 1rem;
+  color: #555;
+  user-select: none;
+}
+
+.checkbox-minimal.checked {
+  background-color: #2260ff;
+  box-shadow: 0 0 10px rgba(34, 96, 255, 0.6);
+}
+
+.checkbox-minimal.checked .checkbox-icon-minimal,
+.checkbox-minimal.checked .checkbox-label-minimal {
+  color: white;
+}

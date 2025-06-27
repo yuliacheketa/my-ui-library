@@ -1,0 +1,333 @@
+.app-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition:
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.1s ease-out;
+  padding: 12px 24px;
+  font-size: 16px;
+  outline-offset: 4px;
+  outline: none;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.app-button::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.3);
+  transition: transform 0.4s ease, opacity 0.6s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.app-button:active::after {
+  transform: scale(2.5);
+  opacity: 1;
+  transition:  transform 0s, opacity 0.3s ease;
+}
+
+.app-button > .button-content,
+.app-button > .icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.app-button .icon {
+  display: inline-flex;
+  font-size: 1.2em;
+}
+
+.app-button .start-icon {
+  margin-right: 8px;
+}
+
+.app-button .end-icon {
+  margin-left: 8px;
+}
+
+.app-button.full-width {
+  width: 100%;
+}
+
+.app-button.disabled,
+.app-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.app-button:not(.disabled):hover {
+  filter: brightness(0.9);
+}
+
+.app-button:not(.disabled):focus-visible {
+  outline: 3px solid #a3c9ff;
+  outline-offset: 4px;
+  box-shadow: 0 0 8px #a3c9ff88;
+  background-color: var(--hover-bg, inherit);
+}
+
+.app-button.primary {
+  --bg-color: #a8d0ff;
+  --hover-bg: #7ab8ff;
+  background-color: var(--bg-color);
+  color: #1e293b;
+  box-shadow: 0 4px 10px rgb(168 208 255 / 0.5);
+}
+
+.app-button.primary:hover:not(:disabled) {
+  background-color: var(--hover-bg);
+  box-shadow: 0 6px 15px rgb(122 184 255 / 0.7);
+  transform: translateY(-2px);
+}
+
+.app-button.secondary {
+  --bg-color: #e6d0f9;
+  --hover-bg: #cbb0f5;
+  background-color: var(--bg-color);
+  color: #4b3b61;
+  box-shadow: 0 4px 10px rgb(230 208 249 / 0.4);
+}
+
+.app-button.secondary:hover:not(:disabled) {
+  background-color: var(--hover-bg);
+  box-shadow: 0 6px 15px rgb(203 176 245 / 0.6);
+  transform: translateY(-2px);
+}
+
+.app-button.outline {
+  background-color: transparent;
+  border: 2px solid #7bd9d9;
+  color: #7bd9d9;
+  box-shadow: none;
+}
+
+.app-button.outline:hover:not(:disabled) {
+  background-color: #7bd9d9;
+  color: #1e293b;
+  box-shadow: 0 6px 15px rgb(123 217 217 / 0.6);
+  transform: translateY(-2px);
+}
+
+.app-button.danger {
+  --bg-color: #ffb3ab;
+  --hover-bg: #ff8b81;
+  background-color: var(--bg-color);
+  color: #58120f;
+  box-shadow: 0 4px 10px rgb(255 179 171 / 0.6);
+}
+
+.app-button.danger:hover:not(:disabled) {
+  background-color: var(--hover-bg);
+  box-shadow: 0 6px 15px rgb(255 139 129 / 0.8);
+  transform: translateY(-2px);
+}
+
+.app-button.small {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+.app-button.medium {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+.app-button.large {
+  font-size: 20px;
+  padding: 16px 32px;
+  border-radius: 10px;
+}
+
+/* === Cyberpunk Style === */
+.app-button.cyberpunk {
+  background: #0f1a2c;
+  color: #00fff7;
+  border: 2px solid #00fff7;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-button.cyberpunk::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 100%;
+  height: 400%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 247, 0.3), transparent);
+  transform: rotate(25deg) translateY(-50%);
+  animation: cyber-scan 3s infinite;
+}
+
+@keyframes cyber-scan {
+  0% { left: -50%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+.app-button.cyberpunk:hover:not(:disabled) {
+  background: #1e2b44;
+  box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+}
+
+
+/* === Glow Style === */
+.app-button.glow {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 0 5px #fff, 0 0 10px #ff0066, 0 0 20px #ff0066;
+  transition: all 0.3s ease;
+}
+
+.app-button.glow:hover:not(:disabled) {
+  box-shadow: 0 0 10px #fff, 0 0 20px #ff0066, 0 0 30px #ff0066;
+  transform: scale(1.05);
+}
+
+
+/* === Neon Style === */
+.app-button.neon {
+  background: black;
+  color: #fff;
+  border: 2px solid #0f0;
+  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+  box-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+  transition: all 0.3s ease;
+}
+
+.app-button.neon:hover:not(:disabled) {
+  box-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+  color: #0f0;
+}
+
+
+/* === Glassmorphism Style === */
+.app-button.glass {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.app-button.glass:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+
+/* === Pulse Style (animated) === */
+.app-button.pulse {
+  animation: pulse 2s infinite;
+  transition: transform 0.2s ease;
+}
+
+.app-button.pulse:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* === HOVER EFFECTS === */
+
+/* Scale + Shadow */
+.app-button.hover-scale:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient Slide */
+.app-button.hover-gradient:hover:not(:disabled)::before {
+  left: -100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.app-button.hover-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+/* Border Glow Inset */
+.app-button.hover-glow-border:hover:not(:disabled) {
+  animation: glow-border 1s infinite alternate;
+}
+
+@keyframes glow-border {
+  from {
+    box-shadow: inset 0 0 5px #3b82f6, 0 0 5px #3b82f6;
+  }
+  to {
+    box-shadow: inset 0 0 15px #3b82f6, 0 0 10px #3b82f6;
+  }
+}
+
+/* Text Slide Up */
+.app-button.hover-slide-up:hover span {
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+.app-button.hover-slide-up span {
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.8;
+}
+
+/* Glow Expand */
+.app-button.hover-glow-expand:hover:not(:disabled) {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.7), 0 0 20px rgba(59, 130, 246, 0.5);
+  transform: scale(1.03);
+}
