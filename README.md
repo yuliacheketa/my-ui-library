@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# YUCH UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Бібліотека UI-компонентів для React із сучасним, адаптивним та легким у використанні дизайном.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Особливості
 
-## Expanding the ESLint configuration
+- Набір перевикористовуваних компонентів: кнопки, форми, модальні вікна, таблиці, таймлайни тощо
+- Підтримка тем: світла, темна, пастельна
+- Легка кастомізація через CSS Variables та пропси
+- Анімації та приємний UX з мінімальним налаштуванням
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Технології
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React + TypeScript
+- CSS Modules + CSS Variables
+-  Vite 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## Встановлення
+
+```bash
+npm install yuch-ui
+# або
+yarn add yuch-ui
+
+## Використання
+## Кнопки (Button)
+Базові кнопки з варіантами стилю, іконками та підтримкою стану disabled.
+
+
+
+<Button variant="primary" startIcon={<FaCoffee />}>Primary</Button>
+<Button variant="secondary" endIcon={<FaArrowRight />}>Secondary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="danger" disabled>Danger (disabled)</Button>
+Також підтримуються кастомні стилі:
+
+
+<Button variant="cyberpunk">Hacker Mode</Button>
+<Button variant="glow">Glowing Future</Button>
+Поля вводу (InputField)
+Підтримка різних типів: текст, textarea, чекбокс, select.
+
+
+<InputField label="Ім'я" type="text" value={name} onChange={...} placeholder="Введіть ім'я" />
+<InputField label="Опис" type="textarea" value={desc} onChange={...} />
+<InputField label="Підписатися" type="checkbox" checked={subscribed} onChange={...} />
+<InputField label="Вибір" type="select" value={fruit} onChange={...} options={[
+  { label: 'Яблуко', value: 'apple' },
+  { label: 'Банан', value: 'banana' },
+]} />
+Перемикачі (ToggleSwitch)
+Перемикачі з різними візуальними стилями (варіантами):
+
+
+<ToggleSwitch checked={isPastel} onChange={setIsPastel} label="Pastel" variant="pastel" />
+<ToggleSwitch checked={isGlass} onChange={setIsGlass} label="Glassmorphism" variant="glass" />
+<ToggleSwitch checked={isNeumorphism} onChange={setIsNeumorphism} label="Neumorphism" variant="neumorphism" />
