@@ -424,7 +424,6 @@ yarn add yuch-ui
     {/* Основний контент */}
   </main>
 </div>
-```
 
 
 <BubbleChart data={data3} darkMode={true} />
